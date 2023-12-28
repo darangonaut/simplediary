@@ -23,7 +23,9 @@
                     </div>
                     <button 
                         type="submit"
-                        class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+
                         >
                         Post
                     </button>
@@ -35,18 +37,24 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($posts as $post)
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4 mb-4 dark:text-gray-200
-            flex flex-row justify-between
-            ">
-                {{ $post->body }}
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4 mb-4 dark:text-gray-200">
+                <div class="flex flex-row justify-between">
+                    <span class="text-gray-400 mr-4">
+                        {{ $post->body }}
+                    </span>
 
-                <form action="{{ route('posts.destroy', $post) }}" method="POST"
-                onsubmit="return confirm('Are you sure?');"
-                >
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="text-red-500">Delete</button>
-                </form>
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded
+                        ">X</button>
+                    </form>
+                </div>
+
+                <div class="w-full text-gray-400 text-sm mr-4">
+                    {{ $post->created_at->format('Y-m-d') }}
+                </div>
+
             </div>
             @endforeach
         </div>
