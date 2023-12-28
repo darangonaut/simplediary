@@ -40,7 +40,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4 mb-4 dark:text-gray-200">
                 <div class="flex flex-row justify-between">
                     <span class="text-gray-400 mr-4">
-                        {{ $post->body }}
+                        {!! nl2br(e($post->body)) !!}
                     </span>
 
                     <div class="flex flex-row h-8">
