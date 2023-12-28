@@ -14,6 +14,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::where('user_id', auth()->user()->id)->latest()->paginate(5);
+        
         return view('posts.index', [
             'posts' => $posts
         ]);
@@ -57,7 +58,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -65,7 +68,14 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $data = $request->validate([
+            'body' => 'required'
+        ]);
+
+        $post->body = $data['body'];
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
 
     /**
