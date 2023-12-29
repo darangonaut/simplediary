@@ -40,9 +40,9 @@
             
         </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid md:grid-cols-2 gap-4">
             @foreach ($posts as $post)
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4 mb-4 dark:text-gray-200">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4 dark:text-gray-200 ">
                 <div class="flex flex-row justify-between">
                     <span class="text-gray-400 mr-4">
                         {!! nl2br(e($post->body)) !!}
