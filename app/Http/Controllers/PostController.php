@@ -26,6 +26,9 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
+        if (!$search) {
+            return redirect()->route('posts.index');
+        }
         $posts = Post::where('body', 'like', '%'.$search.'%')->paginate(10);
         $count = Post::where('body', 'like', '%'.$search.'%')->count();
 
