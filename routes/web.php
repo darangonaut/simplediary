@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/posts/search', [PostController::class, 'search'])->middleware(['auth', 'verified'])->name('posts.search');
 Route::resource('posts', PostController::class)->middleware(['auth', 'verified'])->name('*', 'posts');
 
 Route::middleware('auth')->group(function () {

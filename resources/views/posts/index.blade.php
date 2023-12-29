@@ -1,15 +1,44 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Posts') }}
-        </h2>
+        <div class="flex w-full flex-col md:flex-row md:justify-between
+            ">
+        <div class="w-auto">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Posts') }}
+            </h2>
 
-        <h3>
-            Count of posts: {{ $count }}
-        </h3>
+            <h3 class="break-keep">
+                Count of posts: {{ $count }}
+            </h3>
+        </div>
+
+        <div class="w-full md:w-1/2 mt-4 md:mt-0">
+            <form action="{{ route('posts.search') }}" method="GET" class="w-full mx-auto rounded-lg" enctype="multipart/form-data">
+                <div class="flex">
+                    <input 
+                        type="text" 
+                        name="search" 
+                        id="search" 
+                        class="flex-grow p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Search..."
+                        value="{{ request()->query('search') }}"
+                    >
+                    <button 
+                        type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-lg"
+                    >
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+        </div>
+    
     </x-slot>
 
     <div class="py-12">
+
+
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-4 p-4">

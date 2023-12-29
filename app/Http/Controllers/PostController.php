@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Http\Request;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -16,6 +17,18 @@ class PostController extends Controller
         $posts = Post::where('user_id', auth()->user()->id)->latest()->paginate(10);
         $count = Post::where('user_id', auth()->user()->id)->count();
         
+        return view('posts.index', [
+            'posts' => $posts,
+            'count' => $count,
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $posts = Post::where('body', 'like', '%'.$search.'%')->paginate(10);
+        $count = Post::where('body', 'like', '%'.$search.'%')->count();
+
         return view('posts.index', [
             'posts' => $posts,
             'count' => $count,
