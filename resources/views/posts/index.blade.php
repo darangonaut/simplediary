@@ -77,7 +77,7 @@
                     {!! nl2br(e($post->body)) !!}
                 </div>
 
-                <div class="flex flex-row h-8">
+                <div class="flex flex-row h-8 items-baseline">
                     <span class="w-full text-gray-400 text-sm mr-4">
                         {{ $post->updated_at->format('Y-m-d') }}
                     </span>
