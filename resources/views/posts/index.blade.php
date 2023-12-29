@@ -36,14 +36,14 @@
     
     </x-slot>
 
-    <div class="py-12">
+    <div class="pt-4 pb-12">
 
 
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg mb-4 p-4">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg mb-4 p-2">
                 @auth
-                <form method="POST" action="{{ route('posts.store') }}" class="max-w-xl mx-auto p-4 rounded-lg" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('posts.store') }}" class="max-w-xl mx-auto p-2 rounded-lg" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-4">
                         <textarea 
@@ -63,7 +63,6 @@
                         </button>
                     </div>
                 </form>
-
                 @endauth
             </div>
             
@@ -103,7 +102,7 @@
             @endforeach
         </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 dark:text-gray-200 mt-4">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 dark:text-gray-200 mt-8">
             {{ $posts->links() }}
         </div>
 
