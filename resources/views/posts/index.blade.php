@@ -40,7 +40,7 @@
 
 
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg mb-4 p-2">
                 @auth
                 <form method="POST" action="{{ route('posts.store') }}" class="max-w-xl mx-auto p-2 rounded-lg" enctype="multipart/form-data">
