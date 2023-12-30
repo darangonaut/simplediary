@@ -47,15 +47,15 @@
         </div>
         <div class="w-7/8 mx-auto sm:px-6 lg:px-8 mb-4 text-center grid grid-cols-10">
             @foreach (array_reverse($arrayOfLast30Days) as $day)
-                <div class="inline-block w-1/30 text-center text-xs 
+                <div class="inline-block w-1/30 text-center text-xs px-1 py-2  
                 @if ($day['countPosts'] == 0)
-                    bg-gray-200
+                    bg-gray-200 dark:bg-gray-700 dark:text-gray-400
                 @elseif ($day['countPosts'] < 2)
-                    bg-green-300 
+                    bg-green-300 dark:text-gray-800
                 @else
-                    bg-green-600 
+                    bg-green-600 dark:text-gray-200
                 @endif
-                px-1 py-2">
+                ">
                     {{ $day['countPosts'] }}
                 </div>
             @endforeach
