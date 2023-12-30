@@ -39,8 +39,8 @@
     <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg my-4 p-2 max-w-3xl mx-auto">
 
         <div class="pt-4 pb-4">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-2">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     Last 30 days
                 </h2>
             </div>
