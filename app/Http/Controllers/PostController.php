@@ -20,6 +20,7 @@ class PostController extends Controller
         return view('posts.index', [
             'posts' => $posts,
             'count' => $count,
+            'arrayOfLast30Days' => $this->getArrayOfLast30Days(),
         ]);
     }
 
@@ -35,6 +36,7 @@ class PostController extends Controller
         return view('posts.index', [
             'posts' => $posts,
             'count' => $count,
+            'arrayOfLast30Days' => $this->getArrayOfLast30Days(),
         ]);
     }
 
@@ -104,5 +106,16 @@ class PostController extends Controller
         $post->delete();
 
         return back();
+    }
+
+    private function getArrayOfLast30Days()
+    {
+        $today = date('Y-m-d');
+        $arrayOfLast30Days = array();
+        for ($i = 0; $i < 30; $i++) {
+            $arrayOfLast30Days[$i]['date'] = date('Y-m-d', strtotime($today . ' - ' . $i . ' days'));
+            $arrayOfLast30Days[$i]['countPosts'] = count(Post::where('user_id', auth()->user()->id)->whereDate('updated_at', $arrayOfLast30Days[$i]['date'])->get());
+        }
+        return $arrayOfLast30Days;
     }
 }

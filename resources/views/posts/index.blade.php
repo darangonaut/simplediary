@@ -36,9 +36,31 @@
     
     </x-slot>
 
-    <div class="pt-4 pb-12">
+    <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg my-4 p-2 max-w-3xl mx-auto">
 
-
+        <div class="pt-4 pb-4">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-2">
+                    Last 30 days
+                </h2>
+            </div>
+        </div>
+        <div class="w-7/8 mx-auto sm:px-6 lg:px-8 mb-4 text-center grid grid-cols-10">
+            @foreach (array_reverse($arrayOfLast30Days) as $day)
+                <div class="inline-block w-1/30 text-center text-xs 
+                @if ($day['countPosts'] == 0)
+                    bg-gray-200
+                @elseif ($day['countPosts'] < 2)
+                    bg-green-300 
+                @else
+                    bg-green-600 
+                @endif
+                px-1 py-2">
+                    {{ $day['countPosts'] }}
+                </div>
+            @endforeach
+        </div>
+    </div>
 
     <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg mb-4 p-2">
