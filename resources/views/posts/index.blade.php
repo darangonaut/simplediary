@@ -45,9 +45,9 @@
                 </h2>
             </div>
         </div>
-        <div class="w-7/8 mx-auto sm:px-6 lg:px-8 mb-4 text-center grid grid-cols-10">
+        <div class="w-7/8 mx-auto sm:px-6 lg:px-8 mb-4 text-center grid grid-cols-10 gap-0.5">
             @foreach (array_reverse($arrayOfLast30Days) as $day)
-                <div class="inline-block w-1/30 text-center text-xs px-1 py-2  
+                <div data-tooltip-target="tooltip-default" class="inline-block w-1/30 text-center text-xs py-1.5 rounded-sm
                 @if ($day['countPosts'] == 0)
                     bg-gray-200 dark:bg-gray-700 dark:text-gray-400
                 @elseif ($day['countPosts'] < 2)
