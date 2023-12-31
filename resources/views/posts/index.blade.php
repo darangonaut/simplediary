@@ -12,7 +12,7 @@
             </h3>
         </div>
 
-        <div class="w-full md:w-1/2 mt-4 md:mt-0">
+        <div class="w-full md:w-1/2 mt-4 md:mt-0 pb-8">
             <form action="{{ route('posts.search') }}" method="GET" class="w-full mx-auto rounded-lg" enctype="multipart/form-data">
                 <div class="flex">
                     <input 
@@ -36,9 +36,7 @@
     
     </x-slot>
 
-    <div class="mt-4 z-10 w-full h-full flex items-center justify-center">
-        <button id="modal-button" class="w-64 h-12 text-lg text-white bg-blue-500 rounded-md px-4 py-2">New entry</button> <!--Open Modal -->
-    </div> 
+    <button id="modal-button" class=" z-50 fixed bottom-4 right-4 w-auto h-12 text-lg text-white bg-blue-500 rounded-md px-4 py-2">New entry</button> <!--Open Modal -->
 
     <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg my-4 p-2 max-w-3xl mx-auto">
 
@@ -66,10 +64,6 @@
         </div>
     </div>
 
-    <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
-
-            
-        </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid md:grid-cols-2 gap-4">
             @foreach ($posts as $post)
@@ -105,7 +99,7 @@
             @endforeach
         </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 dark:text-gray-200 mt-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 dark:text-gray-200 mt-8 pb-20">
             {{ $posts->links() }}
         </div>
 
