@@ -36,6 +36,10 @@
     
     </x-slot>
 
+    <div class="mt-4 z-10 w-full h-full flex items-center justify-center">
+        <button id="modal-button" class="w-64 h-12 text-lg text-white bg-blue-500 rounded-md px-4 py-2">New entry</button> <!--Open Modal -->
+    </div> 
+
     <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg my-4 p-2 max-w-3xl mx-auto">
 
         <div class="pt-4 pb-4">
@@ -63,33 +67,7 @@
     </div>
 
     <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg mb-4 p-2">
-            @auth
-            <form method="POST" action="{{ route('posts.store') }}" class="max-w-xl mx-auto p-2 px-4 rounded-lg" enctype="multipart/form-data">
-                    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-2">
-                        {{ __('New entry') }}
-                    </h2>
-                    @csrf
-                    <div class="mb-4">
-                        <textarea 
-                            name="body" 
-                            id="body" 
-                            cols="30" 
-                            rows="3"
-                            class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                            placeholder="Your message here..."></textarea>
-                    </div>
-                    <div class="flex justify-center">
-                        <button 
-                            type="submit"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                        >
-                            Post
-                        </button>
-                    </div>
-                </form>
-                @endauth
-            </div>
+
             
         </div>
 
@@ -132,4 +110,70 @@
         </div>
 
     </div>
+
+    <div id="modal" class="hidden items-center justify-center h-screen w-screen fixed top-0 bg-black bg-opacity-60"> <!--Modal Dialog -->
+        <div class="bg-white dark:bg-gray-800 max-w-xl w-full rounded-md"> <!--Modal Content -->
+             <div class="p-3 flex items-center justify-between"> <!--Modal Header -->
+                <h3 class="font-semibold text-xl dark:text-gray-200 ">{{ __('New entry') }}</h3>
+                <span class="modal-close cursor-pointer">×</span> <!-- Close Modal -->
+            </div>
+            <div class="p-3"> <!--Modal Body -->
+            <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg mb-4 p-2">
+            @auth
+            <form method="POST" action="{{ route('posts.store') }}" class="max-w-xl mx-auto px-4 rounded-lg" enctype="multipart/form-data">
+                    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-2">
+                    </h2>
+                    @csrf
+                    <div class="mb-4">
+                        <textarea 
+                            name="body" 
+                            id="body" 
+                            cols="30" 
+                            rows="3"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            placeholder="Your message here..."></textarea>
+                    </div>
+                    <div class="flex justify-center">
+                        <button 
+                            type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        >
+                            Post
+                        </button>
+                    </div>
+                </form>
+                @endauth
+            </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const x = document.getElementsByTagName('BODY')[0] // Select body tag because of disable scroll when modal is active
+    const modal = document.getElementById('modal') // modal
+    const modalBtn = document.getElementById('modal-button') // launch modal button
+    const modalClose = document.getElementsByClassName('modal-close') // close modal button
+
+    // Open modal
+    modalBtn.onclick = function () {
+            modal.style.display = "flex"; // Show modal
+            x.style.overflow = "hidden"; //Disable scroll on body
+    }
+
+    // Select and trigger all close buttons
+    for (var i = 0; i < modalClose.length; i++) {
+        modalClose[i].addEventListener('click', function () {
+            modal.style.display = "none"; // Hide modal
+            x.style.overflow = "auto"; // Active scroll on body
+        })
+    }
+
+    // Close modal when click away from modal
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none"; // Hide modal
+            x.style.overflow = "auto"; // Active scroll on body
+        }
+    }
+</script>
 </x-app-layout>
