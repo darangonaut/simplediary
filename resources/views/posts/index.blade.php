@@ -169,5 +169,14 @@
             x.style.overflow = "auto"; // Active scroll on body
         }
     }
+
+
+    // po stlaceni kombinacie shift + N sa zobrazi modal
+    document.addEventListener('keydown', function (event) {
+        if (event.shiftKey && event.code === 'KeyN') {
+            modal.style.display = "flex"; // Show modal
+            x.style.overflow = "hidden"; //Disable scroll on body
+        }
+    });
 </script>
 </x-app-layout>
